@@ -1,0 +1,14 @@
+my:
+  custom:
+    property: false
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: none
+
+my:
+  custom:
+    property: true
