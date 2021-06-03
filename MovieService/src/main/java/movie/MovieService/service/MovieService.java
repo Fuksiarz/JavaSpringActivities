@@ -24,14 +24,11 @@ public class MovieService {
 
         return movieRepository.findById(id).orElseThrow(MovieNotFoundException::new);
     }
-    public Movie getMovieById(Long id) {
-        return movieRepository.findById(id).orElseThrow(MovieNotFoundException::new);
-    }
     public Movie addMovie(Movie movie) {
         return movieRepository.save(movie);
     }
     public Movie updateMovie(Long id, Movie movie) {
-        var movieToUpdate = getMovieById(id);
+        var movieToUpdate = findById(id);
         if (movie.getTitle() != null) {
             movieToUpdate.setTitle((movie.getTitle()));
         }
@@ -49,7 +46,7 @@ public class MovieService {
 
     }
     public void isAvailable(Long id) {
-        var movie = getMovieById(id);
+        var movie = findById(id);
         movie.setAvailable(true);
         addMovie(movie);
     }

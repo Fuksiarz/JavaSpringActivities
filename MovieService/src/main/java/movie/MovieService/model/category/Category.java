@@ -1,5 +1,5 @@
-package movie.MovieService.model.category;
+package movie.movieService.model.category;
 
 public enum Category {
-    Horror, History, Fantasy,
+    Horror, History, Fantasy, Action
 }
