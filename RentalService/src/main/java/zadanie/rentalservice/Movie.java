@@ -1,24 +1,13 @@
-package movie.movieService.model;
+package zadanie.rentalservice;
 
-
-import movie.movieService.model.category.Category;
-import org.springframework.lang.NonNull;
-
-
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
-
-@Entity
 public class Movie {
-    @Id
+
     private Long id;
 
     private String title;
-    @Enumerated(EnumType.STRING)
+
     private Category category;
-    @NonNull
+
     private boolean isAvailable = false;
 
     public Movie(Long id, String title, Category category, boolean isAvailable) {
@@ -26,7 +15,7 @@ public class Movie {
         this.title = title;
         this.category = category;
 
-        this.isAvailable=isAvailable;
+        this.isAvailable = isAvailable;
     }
 
 
@@ -34,10 +23,10 @@ public class Movie {
 
     }
 
-
-    public Long getId() {
-        return id;
+    public boolean isAvailable() {
+        return isAvailable;
     }
+
 
     public String getTitle() {
         return title;
@@ -47,9 +36,6 @@ public class Movie {
         return category;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public void setTitle(String name) {
         this.title = name;
@@ -60,9 +46,13 @@ public class Movie {
     }
 
     public void setAvailable(boolean b) {
-        this.isAvailable=b;
     }
-    public boolean getAvailable(){
-        return isAvailable;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

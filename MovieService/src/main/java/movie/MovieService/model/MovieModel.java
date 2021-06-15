@@ -1,6 +1,6 @@
-package movie.MovieService.model;
+package movie.movieService.model;
 
-import movie.MovieService.model.category.Category;
+import movie.movieService.model.category.Category;
 
 
 public class MovieModel {

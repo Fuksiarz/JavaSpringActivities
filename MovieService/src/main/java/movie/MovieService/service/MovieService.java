@@ -45,12 +45,15 @@ public class MovieService {
         }
 
     }
-    public void isAvailable(Long id) {
-        var movie = findById(id);
-        movie.setAvailable(true);
-        addMovie(movie);
+//    public void isAvailable(Long id) {
+//        var movie = findById(id);
+//        movie.setAvailable(true);
+//        updateMovie(id,movie);
+//        System.out.println("heheheh");
+//    }
+    public void rentMovie(boolean x,Long id){
+        movieRepository.updateMovieAvailability(x,id);
     }
-
     public List<Movie> findAll() {
         return movieRepository.findAll();
     }

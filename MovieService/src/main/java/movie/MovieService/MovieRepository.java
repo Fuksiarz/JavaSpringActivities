@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.NamedQueries;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +17,13 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     List<Movie> findAll();
 
     Movie save(Movie movie);
+
+    @Modifying
+    @Query("update Movie m set m.isAvailable=:isAvailable where m.id=:id")
+    @Transactional
+    void updateMovieAvailability(boolean isAvailable, long id);
+
+
     @Query("select u from Movie u where u.id = ?1")
     Optional<Movie> findById(Long id);
 

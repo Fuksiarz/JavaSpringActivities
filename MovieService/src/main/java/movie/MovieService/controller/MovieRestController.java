@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/movies")
+@RequestMapping("")
 public class MovieRestController {
 //    private MovieService movieService;
 //
@@ -69,7 +69,7 @@ public class MovieRestController {
 
 
     @GetMapping("/movies/{id}")
-    public ResponseEntity<Movie> addMovie(@PathVariable Long id) throws MovieNotFoundException {
+    public ResponseEntity<Movie> findMovie(@PathVariable Long id) throws MovieNotFoundException {
         return ResponseEntity.ok(movieService.findById(id));
     }
 
@@ -82,9 +82,14 @@ public class MovieRestController {
             return ResponseEntity.notFound().build();
         }
     }
-    @PutMapping("/movies/{id}/can")
+    @PutMapping("/movies/return/{id}")
     public ResponseEntity<Void> isAvailable(@PathVariable Long id){
-        movieService.isAvailable(id);
+        movieService.rentMovie(true,id);
+        return ResponseEntity.ok().build();
+    }
+    @PutMapping("/movies/rent/{id}")
+    public ResponseEntity<Void> isNotAvailable(@PathVariable Long id){
+        movieService.rentMovie(false,id);
         return ResponseEntity.ok().build();
     }
 
